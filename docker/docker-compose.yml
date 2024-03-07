@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/ci4/Dockerfile
     volumes:
       - .:/var/www/html
     depends_on:
