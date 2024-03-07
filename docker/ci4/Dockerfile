@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.1-fpm
 
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -15,8 +15,10 @@ RUN apt-get update && apt-get install -y \
 
 COPY php.ini /usr/local/etc/php/
 
-RUN a2enmod rewrite
+WORKDIR /var/www/html
 
-COPY . /var/www/html/
+COPY . .
 
-EXPOSE 80
+ENTRYPOINT ["./docker/ci4/entrypoint.sh"]
+
+CMD ["php-fpm"]
