@@ -2,8 +2,7 @@ version: '3.8'
 services:
   app:
     build:
-      context: .
-      dockerfile: docker/ci4/Dockerfile
+      context: ./docker/ci4
     volumes:
       - .:/var/www/html
     depends_on:
