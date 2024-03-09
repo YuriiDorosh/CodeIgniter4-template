@@ -15,4 +15,8 @@
             <directory name="../app/Views" />
         </ignoreFiles>
     </projectFiles>
+
+    <stubs>
+        <file name="../psalm/stubs.php" />
+    </stubs>
 </psalm>
