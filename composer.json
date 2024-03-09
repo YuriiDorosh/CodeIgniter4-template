@@ -36,6 +36,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "lint": "phplint --configuration .phplint.yml",
     }
 }
