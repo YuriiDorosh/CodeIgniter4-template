@@ -15,6 +15,9 @@
 #--------------------------------------------------------------------
 
 # CI_ENVIRONMENT = production
+#MYSQL_PROD_USER= 
+#MYSQL_PROD_DATABASE= 
+#MYSQL_PROD_PASSWORD= 
 
 #--------------------------------------------------------------------
 # APP
@@ -30,11 +33,23 @@
 # DATABASE
 #--------------------------------------------------------------------
 
+# DEV
+
 database.default.hostname = mysql
 database.default.database = ci4
 database.default.username = root
 database.default.password = root
 database.default.DBDriver = MySQLi
+
+# PROD 
+
+# database.default.hostname = mysql
+# database.default.database = YOUR_PROD_DATABASE
+# database.default.username = YOUR_PROD_USERNAME
+# database.default.password = YOUR_PROD_PASSWORD
+# database.default.DBDriver = MySQLi
+
+# TESTS
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4_test

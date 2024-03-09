@@ -1,3 +1,61 @@
+# CodeIgniter 4 Project Docker Configuration
+# ==========================================
+#
+# This Docker Compose file orchestrates a Docker environment suitable for developing
+# and running a CodeIgniter 4 application. It sets up the following services:
+#
+# 1. App - The main application service running PHP and the CodeIgniter framework.
+# 2. Nginx - A web server to serve the CodeIgniter application.
+# 3. MySQL - A database server for the application's data persistence.
+# 4. Redis - A key-value store used for caching and session storage to enhance performance.
+# 5. Adminer - A database management tool accessible via a web interface for managing the MySQL database.
+#
+# Each service is configured to meet the development needs of a typical CodeIgniter 4 application,
+# ensuring that developers can work on the application in an environment that mirrors
+# production settings as closely as possible. This setup also facilitates easy sharing of
+# the development environment among team members, ensuring consistency across development setups.
+#
+# Usage:
+# ------
+# To start the entire stack, run: `docker-compose up -d`
+# This will build and start all the defined services in detached mode.
+#
+# To stop the services, run: `docker-compose down`
+# This command stops and removes all running containers defined in this file.
+#
+# Service Details:
+# ----------------
+# - `app`: This service uses a custom Dockerfile located in `./docker/ci4`. It's set up to run PHP applications,
+#   particularly tailored for the CodeIgniter framework. The project directory is mounted into the container
+#   to allow live editing of the application code.
+#
+# - `nginx`: Configured as the web server for the application. It uses the official Nginx image and forwards
+#   requests to the PHP application running in the `app` service. Custom Nginx configurations can be applied
+#   by modifying `./docker/nginx/nginx.conf`.
+#
+# - `mysql`: This service runs a MySQL database server, version 5.7. It's used for the application's data storage.
+#   The service is configured with environment variables to set the root password and create a default database
+#   upon initialization.
+#
+# - `redis`: Utilizes the latest Redis image to provide caching and session storage capabilities. It's accessible
+#   by the application through the network, enhancing performance by storing session and cache data in memory.
+#
+# - `adminer`: A lightweight database management tool that provides a web interface for managing MySQL databases.
+#   It's useful for development and debugging purposes.
+#
+# Network Configuration:
+# ----------------------
+# All services are connected via a custom bridge network named `app-network`. This setup ensures that services
+# can communicate with each other using service names as hostnames, thereby simplifying configuration and connectivity.
+#
+# Volumes:
+# --------
+# - `mysql-data`: A named volume for persisting MySQL data. This ensures that the database data remains
+#   intact across container restarts and rebuilds.
+#
+# Note: Modify the service configurations as per your project requirements. Ensure that any sensitive or
+# environment-specific variables are appropriately managed, ideally through a `.env` file or Docker secrets.
+#
 version: '3.8'
 services:
   app:
@@ -9,10 +67,6 @@ services:
       - mysql
     environment:
       CI_ENVIRONMENT: development
-      DB_HOST: mysql
-      DB_DATABASE: ci4
-      DB_USERNAME: root
-      DB_PASSWORD: root
     networks:
       - app-network
 

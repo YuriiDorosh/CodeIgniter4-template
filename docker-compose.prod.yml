@@ -1,0 +1,100 @@
+# Production Docker Configuration for CodeIgniter 4 Application
+# =============================================================
+#
+# This Docker Compose configuration is designed for production deployment of a
+# CodeIgniter 4 application. It defines four main services: the application itself (`app`),
+# an Nginx web server (`nginx`), a MySQL database (`mysql`), and a Redis cache (`redis`).
+# Each service is configured with production in mind, using Alpine images where available
+# for their smaller footprint and setting environment variables for secure and efficient operation.
+#
+# Usage:
+# ------
+# Before running, ensure you have set the environment variables `MYSQL_PROD_DATABASE`,
+# `MYSQL_PROD_USER`, and `MYSQL_PROD_PASSWORD` for the MySQL service. These can be set
+# in an `.env` file located in the same directory as this docker-compose file or exported
+# directly in your shell.
+#
+# To start all services in detached mode, use:
+# `docker-compose -f docker-compose.prod.yml up -d`
+#
+# To stop all services and remove containers, networks, and volumes created by `up`, use:
+# `docker-compose -f docker-compose.prod.yml down`
+#
+# Services:
+# ---------
+# app: The main application service built from a Dockerfile located in `./docker/ci4`.
+#      It's configured to run in a `production` environment. The entire application directory
+#      is mounted into the container to facilitate easy updates, but consider using COPY
+#      in Dockerfile for a more secure, immutable deployment.
+#
+# nginx: Serves as the web server, using the lightweight Alpine Linux version of Nginx.
+#        It serves static files directly and proxies PHP requests to the `app` service.
+#        The production Nginx configuration is mounted from `./docker/nginx/nginx.prod.conf`.
+#
+# mysql: The MySQL database service, crucial for data persistence. It's configured through
+#        environment variables for the database name, user, and password, which should be
+#        securely managed. Data is persisted in a Docker volume named `mysql-data`.
+#
+# redis: Used for caching and session storage to enhance application performance.
+#        Like Nginx, it uses an Alpine Linux image for a smaller footprint.
+#
+# Networks:
+# ---------
+# app-network: A custom bridge network that facilitates communication between services.
+#              All services are attached to this network.
+#
+# Volumes:
+# --------
+# mysql-data: A Docker-managed volume that ensures the persistence of MySQL data across
+#             container restarts and deployments.
+#
+# Notes:
+# ------
+# - This configuration is optimized for production use, but security and performance
+#   tuning is an ongoing process. Always keep your images up to date and monitor
+#   for any potential security vulnerabilities.
+# - Ensure SSL/TLS configuration for Nginx if exposing services directly to the internet.
+#   Consider using a service like Let's Encrypt for free SSL certificates.
+#
+version: '3.8'
+services:
+  app:
+    build:
+      context: ./docker/ci4
+    volumes:
+      - .:/var/www/html
+    environment:
+      CI_ENVIRONMENT: production
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine # Using the alpine version for smaller size
+    volumes:
+      - ./public:/var/www/html/public
+      - ./docker/nginx/nginx.prod.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${MYSQL_PROD_DATABASE}
+      MYSQL_USER: ${MYSQL_PROD_USER}
+      MYSQL_PASSWORD: ${MYSQL_PROD_PASSWORD}
+    networks:
+      - app-network
+
+  redis:
+    image: redis:alpine # Using the alpine version for smaller size
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
