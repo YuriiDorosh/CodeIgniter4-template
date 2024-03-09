@@ -35,7 +35,7 @@ cd CodeIgniter4-template
 Copy the example environment file and configure it as needed:
 
 ```
-cp .env.example .env
+cp env .env
 ```
 
 ### 3. Start Docker Containers
