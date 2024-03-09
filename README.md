@@ -8,6 +8,7 @@ This is a template project for CodeIgniter 4, a powerful PHP framework for build
 - Nginx web server configuration
 - Custom PHP configuration (php.ini)
 - MySQL database server
+- Redis for data caching
 - Adminer database management tool
 - Automated code linting and analysis with phplint, Psalm, and PHP_CodeSniffer
 
