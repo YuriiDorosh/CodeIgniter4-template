@@ -264,3 +264,30 @@ nginx_docker_restart:
 # Connect to the Nginx container
 nginx_shell:
 	docker-compose exec nginx sh
+
+# Scripts Commands
+#-------------------------------------------------
+
+# Start the project with optional environment argument (e.g., make start_project ENV=production)
+start_project:
+	./scripts/start_project.sh $(ENV)
+
+# Stop the project
+stop_project:
+	./scripts/stop_project.sh
+
+# Restart the project
+restart_project:
+	./scripts/restart_project.sh
+
+# Run migrations
+migrate:
+	./scripts/run_migrations.sh
+
+# Run seeders (use SEEDER=seeder_name to specify a seeder)
+seed:
+	./scripts/run_seed.sh $(SEEDER)
+
+# Clear Redis cache with confirmation
+clear_cache:
+	./scripts/clear_cache.sh
