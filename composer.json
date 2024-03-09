@@ -19,7 +19,8 @@
         "mikey179/vfsstream": "^1.6",
         "overtrue/phplint": "^2.0",
         "phpunit/phpunit": "^9.1",
-        "squizlabs/php_codesniffer": "^3.6"
+        "squizlabs/php_codesniffer": "^3.6",
+        "vimeo/psalm": "^4.0"
     },
     "autoload": {
         "exclude-from-classmap": [
