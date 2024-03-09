@@ -18,7 +18,8 @@
         "fakerphp/faker": "^1.9",
         "mikey179/vfsstream": "^1.6",
         "overtrue/phplint": "^2.0",
-        "phpunit/phpunit": "^9.1"
+        "phpunit/phpunit": "^9.1",
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload": {
         "exclude-from-classmap": [
