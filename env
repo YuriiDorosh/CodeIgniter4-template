@@ -30,13 +30,11 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
-# database.default.DBDriver = MySQLi
-# database.default.DBPrefix =
-# database.default.port = 3306
+database.default.hostname = mysql
+database.default.database = ci4
+database.default.username = root
+database.default.password = root
+database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4_test
@@ -141,3 +139,17 @@
 #--------------------------------------------------------------------
 
 # curlrequest.shareOptions = false
+
+#--------------------------------------------------------------------
+# CACHE
+#--------------------------------------------------------------------
+
+cache.handler = redis
+cache.backupHandler = file
+cache.storePath = writable/cache/
+cache.prefix = ci4_
+cache.redis.host = redis
+cache.redis.password = null
+cache.redis.port = 6379
+cache.redis.timeout = 0
+cache.redis.database = 0
