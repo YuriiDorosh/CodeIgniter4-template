@@ -17,6 +17,7 @@
     "require-dev": {
         "fakerphp/faker": "^1.9",
         "mikey179/vfsstream": "^1.6",
+        "overtrue/phplint": "^2.0",
         "phpunit/phpunit": "^9.1"
     },
     "autoload": {
