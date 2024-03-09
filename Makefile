@@ -106,3 +106,9 @@ check_format_from_composer:
 
 psalm:
 	vendor/bin/psalm --config=./configs/psalm.xml
+
+psalm_clear_cache:
+	vendor/bin/psalm --clear-cache --config=./configs/psalm.xml
+
+psalm_forced_start:
+	make -B psalm
