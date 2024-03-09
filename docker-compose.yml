@@ -9,10 +9,6 @@ services:
       - mysql
     environment:
       CI_ENVIRONMENT: development
-      DB_HOST: mysql
-      DB_DATABASE: ci4
-      DB_USERNAME: root
-      DB_PASSWORD: root
     networks:
       - app-network
 
