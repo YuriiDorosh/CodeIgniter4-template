@@ -1,0 +1,3 @@
+```bash
+chmod +x *.sh
+```
