@@ -167,3 +167,22 @@ psalm_clear_cache:
 # Force Psalm to run even if up-to-date
 psalm_forced_start:
 	make -B psalm
+
+# Adminer Commands
+#-------------------------------------------------
+
+# Start the Adminer service in Docker
+adminer_docker_start:
+	docker-compose start adminer
+
+# Stop the Adminer service in Docker
+adminer_docker_stop:
+	docker-compose stop adminer
+
+# Restart the Adminer service in Docker
+adminer_docker_restart:
+	docker-compose restart adminer
+
+# Connect to the Adminer container
+adminer_shell:
+	docker-compose exec adminer sh
