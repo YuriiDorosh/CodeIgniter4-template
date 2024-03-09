@@ -87,19 +87,19 @@ clear_cache:
 # sudo apt-get install php-xml
 # sudo apt install php-codesniffer
 format:
-	./vendor/bin/phpcbf --standard=phpcs.xml app/ || true
+	./vendor/bin/phpcbf --standard=./configs/phpcs.xml app/ || true
 
 format_from_composer:
 	composer run format
 
 lint:
-	./vendor/bin/phplint  --configuration .phplint.yml
+	./vendor/bin/phplint  --configuration ./configs/.phplint.yml
 
 lint_from_composer:
 	composer run lint
 
 check_format:
-	./vendor/bin/phpcs --standard=phpcs.xml app/ > warnings
+	./vendor/bin/phpcs --standard=./configs/phpcs.xml app/ > warnings
 
 check_format_from_composer:
 	composer run check_format
