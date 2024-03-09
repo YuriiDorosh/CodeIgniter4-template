@@ -186,3 +186,22 @@ adminer_docker_restart:
 # Connect to the Adminer container
 adminer_shell:
 	docker-compose exec adminer sh
+
+# MySQL Commands
+#-------------------------------------------------
+
+# Start the MySQL service in Docker
+mysql_docker_start:
+	docker-compose start mysql
+
+# Stop the MySQL service in Docker
+mysql_docker_stop:
+	docker-compose stop mysql
+
+# Restart the MySQL service in Docker
+mysql_docker_restart:
+	docker-compose restart mysql
+
+# Connect to the MySQL container
+mysql_shell:
+	docker-compose exec mysql bash
