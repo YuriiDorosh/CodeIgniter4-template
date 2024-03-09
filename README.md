@@ -1,5 +1,17 @@
 # CodeIgniter 4 Template Project
 
+[![View Counter](https://views.whatilearened.today/views/github/YuriiDorosh/CodeIgniter4-template.svg)](https://views.whatilearened.today/views/github/YuriiDorosh/Information-Theory-and-Coding)
+![GitHub repo size](https://img.shields.io/github/repo-size/YuriiDorosh/CodeIgniter4-template)
+![GitHub License](https://img.shields.io/github/license/YuriiDorosh/CodeIgniter4-template)
+![GitHub issues](https://img.shields.io/github/issues/YuriiDorosh/CodeIgniter4-template)
+![GitHub last commit](https://img.shields.io/github/last-commit/YuriiDorosh/CodeIgniter4-template)
+![GitHub contributors](https://img.shields.io/github/contributors/YuriiDorosh/CodeIgniter4-template)
+
+<img src="https://socialify.git.ci/YuriiDorosh/CodeIgniter4-template/image?font=Source%20Code%20Pro&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark" alt="guilyx" width="700" height="300" />
+
+<br>
+
+
 This is a template project for CodeIgniter 4, a powerful PHP framework for building web applications. It comes pre-configured with Docker, Nginx, MySQL, Adminer, phplint, Psalm, and PHP_CodeSniffer to streamline your development process.
 
 ## Features
