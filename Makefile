@@ -105,4 +105,4 @@ check_format_from_composer:
 	composer run check_format
 
 psalm:
-	vendor/bin/psalm
+	vendor/bin/psalm --config=./configs/psalm.xml
