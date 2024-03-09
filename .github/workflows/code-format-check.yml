@@ -26,7 +26,7 @@ jobs:
         run: php ./vendor/bin/phplint
 
       - name: Run PHP_CodeSniffer
-        run: php ./vendor/bin/phpcs --standard=./configs/phpcs.xml
+        run: php ./vendor/bin/phpcs --standard=./configs/phpcs.xml ./app
 
       - name: Run Psalm
         run: php ./vendor/bin/psalm --config=./configs/psalm.xml
