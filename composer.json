@@ -40,5 +40,7 @@
     "scripts": {
         "test": "phpunit",
         "lint": "phplint --configuration .phplint.yml",
+        "format": "phpcbf --standard=phpcs.xml app/",
+        "check_format": "phpcs --standard=phpcs.xml app/ > warnings"
     }
 }
