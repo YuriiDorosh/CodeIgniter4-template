@@ -205,3 +205,22 @@ mysql_docker_restart:
 # Connect to the MySQL container
 mysql_shell:
 	docker-compose exec mysql bash
+
+# Nginx Commands
+#-------------------------------------------------
+
+# Start the Nginx service in Docker
+nginx_docker_start:
+	docker-compose start nginx
+
+# Stop the Nginx service in Docker
+nginx_docker_stop:
+	docker-compose stop nginx
+
+# Restart the Nginx service in Docker
+nginx_docker_restart:
+	docker-compose restart nginx
+
+# Connect to the Nginx container
+nginx_shell:
+	docker-compose exec nginx sh
