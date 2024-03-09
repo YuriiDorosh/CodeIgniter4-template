@@ -6,17 +6,17 @@
 
 namespace Psalm\Internal\Codebase;
 
-use function view;
-
 class InternalCodebase
 {
     /**
-     * @psalm-suppress UnrecognizedFunction
+     * Initializes framework functions for Psalm to recognize.
      */
     public function initFunctions(): void
     {
-        if (!function_exists('view')) {
+        // Fully qualify the namespace when checking for the function's existence
+        if (!function_exists(__NAMESPACE__ . '\\view')) {
             /**
+             * Declare the stub function within the current namespace.
              * @psalm-suppress UndefinedFunction
              */
             function view(string $view, array $options = []): string
