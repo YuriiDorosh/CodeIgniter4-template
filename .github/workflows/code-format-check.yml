@@ -28,9 +28,5 @@ jobs:
       - name: Run PHP_CodeSniffer
         run: php ./vendor/bin/phpcs --standard=./configs/phpcs.xml ./app
 
-      - name: Update Psalm Configuration for GitHub Actions
-        run: |
-          sed -i 's|../psalm/stubs.php|/home/runner/work/CodeIgniter4-template/CodeIgniter4-template/psalm/stubs.php|' ./configs/psalm.xml
-
       - name: Run Psalm
         run: php ./vendor/bin/psalm --config=./configs/psalm.xml

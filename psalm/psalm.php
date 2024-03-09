@@ -1,28 +1,20 @@
 <?php
 
 /**
- * Stub file for Psalm to recognize CodeIgniter framework functions and classes.
+ * Stub file for Psalm to recognize CodeIgniter framework functions and classes, including the global view function.
  */
 
-namespace Psalm\Internal\Codebase;
+// Remove the namespace declaration to declare the `view` function in the global namespace.
+// Remove the namespace Psalm\Internal\Codebase;
 
-class InternalCodebase
-{
-    /**
-     * Initializes framework functions for Psalm to recognize.
-     */
-    public function initFunctions(): void
-    {
-        // Fully qualify the namespace when checking for the function's existence
-        if (!function_exists(__NAMESPACE__ . '\\view')) {
-            /**
-             * Declare the stub function within the current namespace.
-             * @psalm-suppress UndefinedFunction
-             */
-            function view(string $view, array $options = []): string
-            {
-                return '';
-            }
-        }
-    }
+/**
+ * A stub for the global `view` function provided by CodeIgniter.
+ *
+ * @param string $view Name of the view file to load.
+ * @param array $options Data to pass to the view.
+ * @return string Rendered view content as a string.
+ */
+function view(string $view, array $options = []): string {
+    // Mock implementation for Psalm's benefit.
+    return '';
 }
