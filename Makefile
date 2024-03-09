@@ -23,6 +23,46 @@ docker_run_win:
 docker_stop_win:
 	docker-compose down
 
+# Production Docker Management Commands
+#-------------------------------------------------
+
+# Start the production Docker environment
+prod_up:
+	docker-compose -f docker-compose.prod.yml up -d
+
+# Stop the production Docker environment
+prod_down:
+	docker-compose -f docker-compose.prod.yml down
+
+# Restart the production Docker environment
+prod_restart:
+	make prod_down
+	make prod_up
+
+# View logs for the production Docker environment
+prod_logs:
+	docker-compose -f docker-compose.prod.yml logs
+
+# Rebuild and start the production Docker environment
+prod_rebuild:
+	docker-compose -f docker-compose.prod.yml up -d --build
+
+# Stop and remove all containers, networks, and volumes
+prod_clean:
+	docker-compose -f docker-compose.prod.yml down -v
+
+# Execute production migrations (adjust command as necessary for your project setup)
+prod_migrate:
+	docker-compose -f docker-compose.prod.yml exec app php spark migrate
+
+# Execute production seeders (adjust command as necessary for your project setup)
+prod_seed:
+	docker-compose -f docker-compose.prod.yml exec app php spark db:seed
+
+# Clear the Redis cache in the production environment
+prod_clear_cache:
+	docker-compose -f docker-compose.prod.yml exec redis redis-cli FLUSHALL
+
 # Database migrations
 #-------------------------------------------------
 
